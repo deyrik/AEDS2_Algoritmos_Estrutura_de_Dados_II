@@ -33,22 +33,28 @@ void Inicializa(Apontador_no *no){
     return;
 }
 
-// chave Pesquisa(Apontador_no *no,chave x){
-//     if (*no ==NULL){
-//         printf("registro nao encontrado na arvore\n");
-//         return;    
-//     }
+chave Pesquisa(Apontador_no *no,chave x){
+    if (*no == NULL){
+        printf("registro nao encontrado na arvore\n");
+        return;    
+    }
 
-//     if (x < (*no)->chave){
-//         Pesquisa(x,&(*no)->esq);
-//         return;
-//     }
+    if (x < (*no)->chave){
+        Pesquisa(&(*no)->esq,x);
+        return;
+    }
     
-//     if (x > (*no)->chave){
-//         Pesquisa(x,&(*no)->dir);
-//         return;
-//     }
-// }
+    if (x > (*no)->chave){
+        Pesquisa(&(*no)->dir,x);
+        return;
+    }
+    if (x == (*no)->chave)
+    {
+        return x;
+        // printf("chave encontrada: %d",x);
+    }
+    
+}
 
 void Insere(Apontador_no *no,chave x){
     if (*no == NULL){ //se o nó for vazio 
@@ -72,12 +78,14 @@ void Insere(Apontador_no *no,chave x){
     }
 }
 
-/*
-void Percorre(Apontador_no *no){
-    escolha 1 ou 2
-    1 - largura 
-    2 - altura
-*/
+
+// void Percorre(Apontador_no *no){
+
+//     int valor
+//     escolha 1 ou 2
+//     1 - largura 
+//     2 - altura
+// }
 void Antecessor(Apontador_no ProprioNo ,Apontador_no *no){
     if ((*no)->dir != NULL)
     {
@@ -196,7 +204,16 @@ printf("\n---------\n");
 
 printf("\n---------\n");
 
-    PreOrdem(&arvore1);
+    Ordem(&arvore1);
+
+printf("\n---------\n");
+
+    printf("pesquisando numero:2 ... encontrado o numero: %d",Pesquisa(&arvore1,2));
+
+printf("\n---------\n");
+
+    printf("pesquisando numero:8 ... ");
+    Pesquisa(&arvore1,8);
 
 
 
